@@ -24,9 +24,9 @@ public class Comment {
     private Long articleId; // shard key
     private Long writerId;
     private Boolean deleted;
-    private LocalDateTime createAt;
-    
-    
+    private LocalDateTime createdAt;
+
+
     public static Comment create(Long commentId, String content, Long parentCommentId, Long articleId, Long writerId) {
         Comment comment = new Comment();
         comment.commentId = commentId;
@@ -34,8 +34,8 @@ public class Comment {
         comment.parentCommentId = parentCommentId == null ? commentId : parentCommentId;
         comment.articleId = articleId;
         comment.writerId = writerId;
-        comment.deleted = Boolean.FALSE;
-        comment.createAt = LocalDateTime.now();
+        comment.deleted = false;
+        comment.createdAt = LocalDateTime.now();
         return comment;
     }
     
