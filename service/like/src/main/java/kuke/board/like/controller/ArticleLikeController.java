@@ -10,13 +10,20 @@ import org.springframework.web.bind.annotation.*;
 public class ArticleLikeController {
     
     private final ArticleLikeService articleLikeService;
-    
+
     @GetMapping("/v1/article-likes/articles/{articleId}/users/{userId}")
     public ArticleLikeResponse read(
             @PathVariable(value = "articleId") Long articleId,
             @PathVariable(value = "userId") Long userId) {
-        
+
         return articleLikeService.read(articleId, userId);
+    }
+
+    @GetMapping("/v1/article-likes/articles/{articleId}/count")
+    public Long count(
+            @PathVariable(value = "articleId") Long articleId) {
+
+        return articleLikeService.count(articleId);
     }
 
     @PostMapping("/v1/article-likes/articles/{articleId}/users/{userId}/pessimistic-lock-1")
