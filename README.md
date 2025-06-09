@@ -135,4 +135,41 @@ create table comment.comment_v2
 );
 ```
 
+### **schema::공통**
+```mysql
+create table article.outbox(
+    outbox_id BIGINT not null primary key ,
+    shard_key bigint not null,
+    event_type varchar(100) not null,
+    payload varchar(5000) not null,
+    created_at datetime not null
+);
+create index idx_shard_key_created_at on article.outbox(shard_key asc, created_at asc);
 
+create table article_like.outbox(
+    outbox_id BIGINT not null primary key ,
+    shard_key bigint not null,
+    event_type varchar(100) not null,
+    payload varchar(5000) not null,
+    created_at datetime not null
+);
+create index idx_shard_key_created_at on article_like.outbox(shard_key asc, created_at asc);
+
+create table article_view.outbox(
+    outbox_id BIGINT not null primary key ,
+    shard_key bigint not null,
+    event_type varchar(100) not null,
+    payload varchar(5000) not null,
+    created_at datetime not null
+);
+create index idx_shard_key_created_at on article_view.outbox(shard_key asc, created_at asc);
+
+create table comment.outbox(
+    outbox_id BIGINT not null primary key ,
+    shard_key bigint not null,
+    event_type varchar(100) not null,
+    payload varchar(5000) not null,
+    created_at datetime not null
+);
+create index idx_shard_key_created_at on comment.outbox(shard_key asc, created_at asc);
+```

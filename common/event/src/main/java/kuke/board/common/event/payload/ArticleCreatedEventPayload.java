@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ArticleCreatedEventPayload implements EventPayload {
 
-
     private Long articleId;
     private String title;
     private String content;
